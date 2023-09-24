@@ -2,5 +2,5 @@
 Participantes:
     Ferrante Tomas Abel tomax19cr7@gmail.com
 
-    Romero Fabian Ignacio 
+    Romero Fabian Ignacio fabian.romero.ignacio@gmail.com
  
