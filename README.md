@@ -8,3 +8,4 @@ Participantes:
      Una aplicacion web que permite llevar un registro de las compras que se realizan en una tienda de musica
 
 
+[DER.pdf](https://github.com/TomasFerrante/TPE/files/12717772/DER.pdf)
