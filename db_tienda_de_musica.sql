@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 25, 2023 at 07:04 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 16-10-2023 a las 01:06:26
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_tienda_de_musica`
+-- Base de datos: `db_tienda_de_musica`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `album`
+-- Estructura de tabla para la tabla `album`
 --
 
 CREATE TABLE `album` (
@@ -33,13 +33,22 @@ CREATE TABLE `album` (
   `duracion` int(11) NOT NULL,
   `artista` varchar(45) NOT NULL,
   `genero` varchar(45) NOT NULL,
-  `lanzamiento` date NOT NULL
+  `lanzamiento` date NOT NULL,
+  `id_album` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `album`
+--
+
+INSERT INTO `album` (`nombre`, `canciones`, `duracion`, `artista`, `genero`, `lanzamiento`, `id_album`) VALUES
+('Presion', 14, 1, 'Callejeros', 'Rock', '2023-10-13', 6),
+('historias', 15, 53, 'La beriso', 'Rock', '0000-00-00', 11);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `compras`
+-- Estructura de tabla para la tabla `compras`
 --
 
 CREATE TABLE `compras` (
@@ -50,39 +59,77 @@ CREATE TABLE `compras` (
   `precio` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+-- --------------------------------------------------------
+
 --
--- Indexes for dumped tables
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `email`, `password`) VALUES
+(1, 'webadmin', '$2y$10$HPPHxvPCbxUSDYVbIRKJPuBpgrE1UC7z9JKwZZubHrgv/ChlK2eie');
+
+--
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `album`
+-- Indices de la tabla `album`
 --
 ALTER TABLE `album`
-  ADD PRIMARY KEY (`nombre`);
+  ADD PRIMARY KEY (`id_album`),
+  ADD UNIQUE KEY `nombre` (`nombre`) USING BTREE;
 
 --
--- Indexes for table `compras`
+-- Indices de la tabla `compras`
 --
 ALTER TABLE `compras`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_compras_producto` (`producto`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `compras`
+-- AUTO_INCREMENT de la tabla `album`
+--
+ALTER TABLE `album`
+  MODIFY `id_album` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `compras`
 --
 ALTER TABLE `compras`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `compras`
+-- Filtros para la tabla `compras`
 --
 ALTER TABLE `compras`
   ADD CONSTRAINT `fk_compras_producto` FOREIGN KEY (`producto`) REFERENCES `album` (`nombre`);

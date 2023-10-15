@@ -1,0 +1,48 @@
+<?php
+
+?>
+<form action="agregar" method="POST" >
+<div class="formu">
+<label >nombre</label>
+<input type="text" name="nombre">
+<label for="">canciones</label>
+<input type="text" name="canciones">
+<label for="">duracion</label>
+<input type="text" name="duracion">
+<label for="">artista</label>
+
+<input type="text" name="artista">
+<label for="">genero</label>
+
+<input type="text" name="genero">
+<label for="">lanzamiento</label>
+<input type="text" name="lanzamiento">
+<button type="submit" >enviar</button>
+</div>
+
+
+</form>
+
+
+
+              <ul>
+            
+                
+            <?php foreach($items as $album): ?>
+            
+                    
+                    <li>
+                    <a href="ver"><?=$album->nombre?> </a>
+                  <a href="borrar/<?php echo $album->id_album?>">borrar</a>  
+                  <a href="editar/ <?php echo $album->id_album?>">editar</a>
+
+                    
+            
+                  </li>
+                    
+                
+                
+                  
+                          <?php
+                          endforeach;?>
+                </ul>  
