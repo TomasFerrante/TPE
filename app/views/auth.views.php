@@ -2,7 +2,7 @@
 
 class authviews{
 
-function iniciarsesion(){
+function iniciarsesion($error=null){
     require 'templates/header.phtml';
 
    
@@ -12,6 +12,9 @@ function iniciarsesion(){
 
  
 
+}
+function mostrarError($error) {
+    require './templates/errores.phtml';
 }
 
 }

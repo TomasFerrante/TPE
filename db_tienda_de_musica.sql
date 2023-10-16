@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2023 a las 01:06:26
+-- Tiempo de generación: 17-10-2023 a las 01:38:46
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -34,16 +34,39 @@ CREATE TABLE `album` (
   `artista` varchar(45) NOT NULL,
   `genero` varchar(45) NOT NULL,
   `lanzamiento` date NOT NULL,
-  `id_album` int(11) NOT NULL
+  `id_album` int(11) NOT NULL,
+  `id_categoria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `album`
 --
 
-INSERT INTO `album` (`nombre`, `canciones`, `duracion`, `artista`, `genero`, `lanzamiento`, `id_album`) VALUES
-('Presion', 14, 1, 'Callejeros', 'Rock', '2023-10-13', 6),
-('historias', 15, 53, 'La beriso', 'Rock', '0000-00-00', 11);
+INSERT INTO `album` (`nombre`, `canciones`, `duracion`, `artista`, `genero`, `lanzamiento`, `id_album`, `id_categoria`) VALUES
+('historias', 15, 53, 'La beriso', 'Rock', '1975-02-06', 1, 3),
+('La mosca y la sopa', 10, 38, 'Patricio rey y sus redonditos de ricota', 'Rock', '1991-10-27', 0, 0),
+('Presion', 14, 1, 'Callejeros', 'Rock', '0000-00-00', 2, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categorias`
+--
+
+CREATE TABLE `categorias` (
+  `id_categoria` int(11) NOT NULL,
+  `genero` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`id_categoria`, `genero`) VALUES
+(1, 'jazz'),
+(2, 'Country'),
+(3, 'Rock\r\n'),
+(4, 'Pop\r\n');
 
 -- --------------------------------------------------------
 
@@ -86,8 +109,13 @@ INSERT INTO `usuarios` (`id`, `email`, `password`) VALUES
 -- Indices de la tabla `album`
 --
 ALTER TABLE `album`
-  ADD PRIMARY KEY (`id_album`),
   ADD UNIQUE KEY `nombre` (`nombre`) USING BTREE;
+
+--
+-- Indices de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`id_categoria`);
 
 --
 -- Indices de la tabla `compras`
@@ -107,10 +135,10 @@ ALTER TABLE `usuarios`
 --
 
 --
--- AUTO_INCREMENT de la tabla `album`
+-- AUTO_INCREMENT de la tabla `categorias`
 --
-ALTER TABLE `album`
-  MODIFY `id_album` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+ALTER TABLE `categorias`
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `compras`

@@ -28,6 +28,7 @@ class albumcontrollers{
   
       
       }
+      
   
   
   
@@ -40,12 +41,13 @@ class albumcontrollers{
     $genero = $_POST['genero'];
     $lanzamiento = $_POST['lanzamiento'];
     
-   
-  
+    if(empty($nombre) || empty($canciones) || empty($duracion)|| empty($genero)|| empty($lanzamiento)) {
+    echo "no estan todos los datos";
+  }else{
    $this->model->insertaralbum($nombre,$canciones,$duracion,$artista,$genero,$lanzamiento);
    header("Location:" . BASE_URL . "listar");
    
-      
+  }
          
   }
 
@@ -60,10 +62,10 @@ class albumcontrollers{
         }
     }
 
-    function verdetallado(){
+    function verdetallado($id){
 
       
-        $items= $this->model->obtener();
+        $items= $this->model->obtenerdetallado($id);
           //OBTINEN LAS TAREAS DEL MODELO
            $this->view->mostrardetallado($items);
            

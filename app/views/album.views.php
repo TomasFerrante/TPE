@@ -28,5 +28,10 @@ function mostraradmi($items){
     
 }
 
+function mostrarcategorias($categorias){
+    require 'templates/header.phtml';
+    require 'templates/categorias.phtml';
+}
+
 
 }

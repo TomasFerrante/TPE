@@ -20,7 +20,8 @@ class authcontrollers{
         $email=  $_POST['email'];
         $password= $_POST['password'];
         if(empty ($email)||empty($password)){
-            echo "ingresa algo flaco";
+            $this->views->iniciarsesion('Faltan datos');
+            return;
         
         die();
     }

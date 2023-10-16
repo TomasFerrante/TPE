@@ -1,0 +1,20 @@
+<ul>
+    <li>
+    rock
+    
+
+</li>
+</ul>
+<?php foreach($categorias as $album): ?>
+            
+                    
+            <li class="list-group-item">
+            <a href="categorias/<?php echo $album->id_album?>" ><?=$album->nombre?></a>
+            </li>
+            
+        
+        
+          
+                  <?php
+                  endforeach;?>
+        </ul>   

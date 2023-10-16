@@ -2,6 +2,9 @@
 include_once 'app/controllers/auth.controllers.php';
 include_once 'app/controllers/usuarios.php';
 include_once 'app/controllers/album.controllers.php';
+include_once 'app/controllers/categorias.controllers.php';
+
+
 
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -38,9 +41,10 @@ switch ($params[0]) {
    $controller = new albumcontrollers();
    $controller->agregaralbum();
    break;
+
    case 'ver';
    $controller = new albumcontrollers();
-   $controller->verdetallado();
+   $controller->verdetallado($params[1]);
    break;
    case 'borrar';
    $controller = new albumcontrollers();
@@ -50,6 +54,11 @@ switch ($params[0]) {
    $controller=new albumcontrollers();
   $controller->editar($params[1]);
    break;
+   case 'categorias';
+   $controller=new categoriascontrollers();
+  $controller->vercategorias($params[1]);
+   break;
+
     default: 
         echo "404 Page Not Found";
         break;

@@ -22,6 +22,13 @@ $albumes = $query->fetchall(PDO::FETCH_OBJ);
 return $albumes;
 
 }
+function obtenerdetallado($id){
+    
+    $query = $this->db->prepare('SELECT * FROM `album` WHERE id_album = ?');
+$query->execute([$id]);
+$items = $query->fetchall(PDO::FETCH_OBJ);
+return $items;
+}
 
 
 

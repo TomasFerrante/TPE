@@ -16,7 +16,7 @@
 
 <input type="text" name="genero">
 <label for="">lanzamiento</label>
-<input type="text" name="lanzamiento">
+<input type="date" name="lanzamiento">
 <button type="submit" >enviar</button>
 </div>
 
@@ -24,15 +24,15 @@
 </form>
 
 
-
-              <ul>
+<div class="m-auto" style="width: 80rem; ">
+              <ul  class="list-group">
             
                 
             <?php foreach($items as $album): ?>
             
                     
-                    <li>
-                    <a href="ver"><?=$album->nombre?> </a>
+                    <li class="list-group-item navbar-expand-lg ">
+                    <a  href="ver"><?=$album->nombre?> </a>
                   <a href="borrar/<?php echo $album->id_album?>">borrar</a>  
                   <a href="editar/ <?php echo $album->id_album?>">editar</a>
 
