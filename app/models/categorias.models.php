@@ -12,11 +12,22 @@ private function getconection(){
 
 
 }
-    function obtener(){
-        $query = $this->db->prepare('SELECT * FROM album INNER JOIN categorias ON categorias.id_categoria = album.id_categoria;');
+    function obtenerdetallado(){
+        $query = $this->db->prepare('SELECT ab.genero, ab.nombre FROM album ab INNER JOIN categorias ct ON ab.id_categoria= ct.id_categoria');
        $query->execute();
        $categorias = $query->fetchAll(PDO::FETCH_OBJ);
 
-    return $categorias;
+   return $categorias;
     }
+
+    function obtener(){
+
+        $query = $this->db->prepare('SELECT * FROM categorias');
+    $query->execute();
+    //cargas es un arreglo de cargas
+    $categorias = $query->fetchall(PDO::FETCH_OBJ);
+    
+    return $categorias;
+    
+}
 }

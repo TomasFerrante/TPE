@@ -28,6 +28,16 @@ class categoriascontrollers{
   
       
       }
+      function mostraritems(){
+        
+        $items= $this->model->obtenerdetallado($id);
+              //OBTINEN LAS TAREAS DEL MODELO
+             
+               
+       
+        $this->views->mostrar($items);
+
+      }
 
 
 }

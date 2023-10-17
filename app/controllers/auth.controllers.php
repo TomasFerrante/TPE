@@ -41,11 +41,14 @@ class authcontrollers{
              header("Location:" . BASE_URL . "listar");
         }
         else {
-            echo "acceso denegado";
+            $this->views->iniciarsesion('acceso denegado');
         }
         
 
         
+    }
+    public function error($error){
+        $this->View->mostrarerror($error);
     }
   
 }

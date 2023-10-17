@@ -49,10 +49,13 @@ function borrardatos($id){
     $query->execute([$id]);
 
 }
-function editardatos($id){
-
-    $query=$this->db->prepare('UPDATE album SET cancion = "" WHERE id_album =?');
-    $query->execute([$id]);
+function editardatos($id, $nuevo){
+  
+        $query = $this->db->prepare('UPDATE album SET genero = ? WHERE album . nombre =?');
+    
+        $query->execute([$nuevo, $id]); 
+    
+    
 }
 
 }

@@ -50,6 +50,17 @@ class albumcontrollers{
   }
          
   }
+  public function editarItem($id){
+    $nuevo = $_POST['editar'];
+
+    if(empty($nuevo)) {
+        $this->view->showError("No se completaron todos los campos");
+    } else {
+        $this->view->editar($id);
+        $this->model->editardatos($id, $nuevo);
+        header('Location: ' . BASE_URL . 'listar');
+    }
+}  
 
 
 

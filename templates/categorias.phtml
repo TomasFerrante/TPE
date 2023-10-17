@@ -1,20 +1,18 @@
-<ul>
-    <li>
-    rock
-    
 
-</li>
-</ul>
+
+
+<form method="POST" action="mostrarcategorias">
+        <label for="genero">Selecciona un genero musical:</label>
+        <select id="genero" name="genero">
 <?php foreach($categorias as $album): ?>
             
                     
-            <li class="list-group-item">
-            <a href="categorias/<?php echo $album->id_album?>" ><?=$album->nombre?></a>
-            </li>
-            
-        
-        
-          
-                  <?php
+           
+            <option ><a href="categorias/<?php echo $album->id_album?>" ><?=$album->genero?></a></option>
+            <?php
                   endforeach;?>
-        </ul>   
+        </select>
+        <input type="submit" value="Enviar">
+    </form>
+
+    
