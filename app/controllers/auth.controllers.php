@@ -48,7 +48,7 @@ class authcontrollers{
         
     }
     public function error($error){
-        $this->View->mostrarerror($error);
+        $this->views->mostrarerror($error);
     }
   
 }

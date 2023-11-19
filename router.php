@@ -30,13 +30,17 @@ switch ($params[0]) {
     $controller = new authcontrollers();
     $controller->iniciosesion();
     break;
+
     case 'verify';
     $controller = new authcontrollers();
     $controller->loginusuario();
     break;
+
     case 'listar';
     $controller = new albumcontrollers();
    $controller->veralbum();
+   break;
+   
     case 'agregar';
    $controller = new albumcontrollers();
    $controller->agregaralbum();
@@ -46,6 +50,7 @@ switch ($params[0]) {
    $controller = new albumcontrollers();
    $controller->verdetallado($params[1]);
    break;
+
    case 'borrar';
    $controller = new albumcontrollers();
    $controller->borrar($params[1]);
@@ -58,8 +63,9 @@ switch ($params[0]) {
    
    case 'categorias';
    $controller=new categoriascontrollers();
-  $controller->vercategorias($params[1]);
+  $controller->vercategorias($params[0]);
    break;
+
    case 'mostrarcategorias';
    $controller=new categoriascontrollers();
   $controller->mostraritems($params[1]);
