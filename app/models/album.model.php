@@ -1,12 +1,7 @@
 <?php
+require_once 'app/models/model.php';
 
-public class AlbumModel {
-
-    private $db;
-
-    public function __contruct()  {
-        $this->db = new PDO ('mysql:host=localhost;dbname=db_tienda_de_musica;charset=utf8', 'root', '');
-    }
+public class AlbumModel extends Model {
 
     public function getAlbum() {
         $query = $this->db->prepare('SELECT * FROM album');
