@@ -1,6 +1,6 @@
 <?php
 include_once 'app/views/auth.views.php';
-include_once 'app/models/usuarios.private.models.php';
+include_once 'app/models/user.model.php';
 class authcontrollers{
 
     private $views;
