@@ -1,15 +1,16 @@
 <?php
-include_once 'app/views/album.views.php';
-include_once 'app/models/tienda.de.musica.php';
+include_once './app/views/album.views.php';
+include_once './app/models/album.model.php';
+
 class albumcontrollers{
 
-    private $model;
-    private $view;
+    private $models;
+    private $views;
   
   
    function __construct(){
-       $this->model = new tiendademusica();
-        $this->view = new albumviews();
+        $this->models = new AlbumModel;
+        $this->views = new albumviews();
   
       }
   
@@ -19,9 +20,9 @@ class albumcontrollers{
         $this->chequeoregistro();
        
        
-          $albumes= $this->model->obtener();
+          $albumes= $this->models->getAll();
           //OBTINEN LAS TAREAS DEL MODELO
-           $this->view->mostraradmi($albumes);
+           $this->views->mostraradmi($albumes);
            
            
               //ahora muestra las tareas desde la vista
@@ -29,6 +30,14 @@ class albumcontrollers{
       
       }
       
+      function listado(){
+
+        $items= $this->models->getAll();
+        $this->views->mostrar($items);
+        //OBTINEN LAS TAREAS DEL MODELO
+     
+        
+    }
   
   
   
@@ -40,11 +49,12 @@ class albumcontrollers{
     $artista = $_POST['artista'];
     $genero = $_POST['genero'];
     $lanzamiento = $_POST['lanzamiento'];
+    $precio = $_POST['precio'];
     
     if(empty($nombre) || empty($canciones) || empty($duracion)|| empty($genero)|| empty($lanzamiento)) {
     echo "no estan todos los datos";
   }else{
-   $this->model->insertaralbum($nombre,$canciones,$duracion,$artista,$genero,$lanzamiento);
+   $this->models->insertAlbum($nombre,$canciones,$duracion,$artista,$genero,$lanzamiento,$precio);
    header("Location:" . BASE_URL . "listar");
    
   }
@@ -54,10 +64,10 @@ class albumcontrollers{
     $nuevo = $_POST['editar'];
 
     if(empty($nuevo)) {
-        $this->view->showError("No se completaron todos los campos");
+        //$this->views->showError("No se completaron todos los campos");
     } else {
-        $this->view->editar($id);
-        $this->model->editardatos($id, $nuevo);
+        $this->views->editar($id);
+        //$this->models->updateAlbum($id, $nuevo);
         header('Location: ' . BASE_URL . 'listar');
     }
 }  
@@ -76,9 +86,9 @@ class albumcontrollers{
     function verdetallado($id){
 
       
-        $items= $this->model->obtenerdetallado($id);
+        //$items= $this->models->obtenerdetallado($id);
           //OBTINEN LAS TAREAS DEL MODELO
-           $this->view->mostrardetallado($items);
+           //$this->views->mostrardetallado($items);
            
    
       
@@ -87,12 +97,32 @@ class albumcontrollers{
 
 
     function borrar($id){
-      $this->model->borrardatos($id);
+      $this->models->deleteAlbum($id);
       header('location:' . BASE_URL . "listar");
     
     }
     function editar($id){
-        $this->model->editardatos($id);
+      
+      $nombre =  $_POST['nombre'];
+      $canciones = $_POST['canciones'];
+      $duracion = $_POST['duracion'];
+      $artista = $_POST['artista'];
+      $genero = $_POST['genero'];
+      $lanzamiento = $_POST['lanzamiento'];
+      $precio = $_POST['precio'];
+      
+      if(empty($nombre) || empty($canciones) || empty($duracion)|| empty($genero)|| empty($lanzamiento)) {
+      echo "no estan todos los datos";}
+      else {
+        $this->models->updateAlbum($id, $nombre, $canciones, $duracion, $artista, $genero, $lanzamiento, $precio);
         header('location:' . BASE_URL . "listar");
+      }
+    }
+
+    function mostrarFormEdit($id) {
+      $album = $this->models->getAlbumById($id);
+      $this->views->mostrarFormEdit($album);
+
+
     }
 }

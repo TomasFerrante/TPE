@@ -6,6 +6,8 @@ class usuariosviews{
         require 'templates/header.phtml';
      require 'templates/listado.phtml';
 
+     
+
     }
   }
 

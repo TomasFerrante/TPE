@@ -1,11 +1,28 @@
 
-    <form action="editar/<?=$id?>" method="POST">
+    <form action="../editar/<?= $album->id?>" method="POST">
         <div class="mb-3">
-           <p>editar</p>
-
+           <p>Editar</p>
             <label for="nuevo">editar nombre:</label>
-            <input name="editar" placeholder="ingrese nombre cancion" type="text" >
+            <input name="nombre" value= "<?= $album->nombre?>" type="text" >
 
-            <button type="submit" class="btn btn-primary">enviar</button>
+            <label for="nuevo">editar canciones:</label>
+            <input name="canciones" value= "<?= $album->canciones?>" type="text" >
+
+            <label for="nuevo">editar duracion:</label>
+            <input name="duracion" value= "<?= $album->duracion?>" type="text" >
+
+            <label for="nuevo">editar artista:</label>
+            <input name="artista" value= "<?= $album->artista?>" type="text" >
+
+            <label for="nuevo">editar genero:</label>
+            <input name="genero" value= "<?= $album->genero?>" type="text" >
+
+            <label for="nuevo">editar lanzamiento:</label>
+            <input name="lanzamiento" value= "<?= $album->lanzamiento?>" type="text" >
+
+            <label for="nuevo">editar precio:</label>
+            <input name="precio" value= "<?= $album->precio?>" type="text" >
+    
+            <input type="submit" class="btn btn-primary" value="enviar">enviar</input>
         </div>
     </form>

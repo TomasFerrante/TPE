@@ -1,6 +1,6 @@
 <?php
 
-public class AuthHelper {
+ class AuthHelper {
 
     public static function init() {
         if (session_status() != PHP_SESSION_ACTIVE) {

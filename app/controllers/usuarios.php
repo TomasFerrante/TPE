@@ -1,29 +1,22 @@
 <?php
-include_once 'app/models/tienda.de.musica.php';
-include_once 'app/views/usuarios.views.php';
+include_once './app/models/user.model.php';
+include_once './app/views/usuarios.views.php';
 class usuarios {
     private $models;
     private $views;
 
     function __construct(){
-        $this->models= new tiendademusica();
+        $this->models = new UserModel;
         $this->views= new usuariosviews();
    
         
 
     }
 
-    function listado(){
-
-        $items= $this->models->obtener();
-        $this->views->mostrar($items);
-        //OBTINEN LAS TAREAS DEL MODELO
-     
-        
-    }
+    
   function ver(){
     $items= $this->models->obtener();
-    $this->views->mostrardetallado($items);
+    //$this->views->mostrardetallado($items);
  
   }
 }

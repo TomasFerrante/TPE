@@ -9,7 +9,7 @@ class authcontrollers{
     public function __construct(){
         
         $this->views= new authviews();
-        $this->model= new usuariosprivatemodels();
+        $this->model= new UserModel();
     }
     public function iniciosesion(){
         $this->views->iniciarsesion();
@@ -27,7 +27,7 @@ class authcontrollers{
     }
      
           //aca obtinen los datos del usuario
-        $usuario= $this->model->usuariosporemail($email);
+        $usuario= $this->model->getByEmail($email);
          //si el usuario existes
         if($usuario && password_verify($password, $usuario->password) ){
             

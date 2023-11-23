@@ -1,6 +1,6 @@
 <?php
-
-public class Model {
+include_once './config.php';
+ class Model {
     protected $db;
 
     public function __construct() {

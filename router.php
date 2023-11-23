@@ -22,7 +22,7 @@ $params = explode('/', $action);
 switch ($params[0]) {
  
      case 'home';
-     $controllers= new usuarios();
+     $controllers= new albumcontrollers();
      $controllers->listado();
      break;
    
@@ -56,12 +56,19 @@ switch ($params[0]) {
    $controller->borrar($params[1]);
    break;
    
-   case 'editar';
-   $controller=new albumcontrollers();
+   case 'editar':
+
+    $controller=new albumcontrollers();
+   
   $controller->editar($params[1]);
    break;
+
+   case 'mostraredit':
+    $controllers = new albumcontrollers();
+    $controllers->mostrarFormEdit($params[1]);
+    break;
    
-   case 'categorias';
+   case 'categorias':
    $controller=new categoriascontrollers();
   $controller->vercategorias($params[0]);
    break;
