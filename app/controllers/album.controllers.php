@@ -49,12 +49,12 @@ class albumcontrollers{
     $artista = $_POST['artista'];
     $genero = $_POST['genero'];
     $lanzamiento = $_POST['lanzamiento'];
-    $precio = $_POST['precio'];
+    
     
     if(empty($nombre) || empty($canciones) || empty($duracion)|| empty($genero)|| empty($lanzamiento)) {
     echo "no estan todos los datos";
   }else{
-   $this->models->insertAlbum($nombre,$canciones,$duracion,$artista,$genero,$lanzamiento,$precio);
+   $this->models->insertAlbum($nombre,$canciones,$duracion,$artista,$genero,$lanzamiento);
    header("Location:" . BASE_URL . "listar");
    
   }
@@ -109,12 +109,12 @@ class albumcontrollers{
       $artista = $_POST['artista'];
       $genero = $_POST['genero'];
       $lanzamiento = $_POST['lanzamiento'];
-      $precio = $_POST['precio'];
+      
       
       if(empty($nombre) || empty($canciones) || empty($duracion)|| empty($genero)|| empty($lanzamiento)) {
       echo "no estan todos los datos";}
       else {
-        $this->models->updateAlbum($id, $nombre, $canciones, $duracion, $artista, $genero, $lanzamiento, $precio);
+        $this->models->updateAlbum($id, $nombre, $canciones, $duracion, $artista, $genero, $lanzamiento);
         header('location:' . BASE_URL . "listar");
       }
     }

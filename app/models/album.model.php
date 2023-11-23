@@ -27,9 +27,9 @@ require_once 'app/models/model.php';
         return $albumes;
     }
 
-    public function insertAlbum($nombre, $cant_canciones, $duracion, $artista, $genero, $lanzamiento, $precio) {
-        $query = $this->db->prepare('INSERT INTO album (nombre, canciones, duracion, artista, genero, lanzamiento, precio) VALUES (?,?,?,?,?,?,?)');
-        $query->execute([$nombre, $cant_canciones, $duracion, $artista, $genero, $lanzamiento, $precio]);
+    public function insertAlbum($nombre, $cant_canciones, $duracion, $artista, $genero, $lanzamiento) {
+        $query = $this->db->prepare('INSERT INTO album (nombre, canciones, duracion, artista, genero, lanzamiento) VALUES (?,?,?,?,?,?)');
+        $query->execute([$nombre, $cant_canciones, $duracion, $artista, $genero, $lanzamiento]);
         
         return $this->db->lastInsertId();
     }
@@ -39,9 +39,9 @@ require_once 'app/models/model.php';
         $query->execute([$id]);
     }
 
-    public function updateAlbum($id, $nombre, $cant_canciones, $duracion, $artista, $genero, $lanzamiento, $precio) {
-        $query = $this->db->prepare('UPDATE album SET nombre = ?, canciones = ?, duracion = ?, artista = ?, genero = ?, lanzamiento = ?, precio = ? WHERE id = ?');
-        $query->execute([$nombre, $cant_canciones, $duracion, $artista, $genero, $lanzamiento, $precio, $id]);
+    public function updateAlbum($id, $nombre, $cant_canciones, $duracion, $artista, $genero, $lanzamiento) {
+        $query = $this->db->prepare('UPDATE album SET nombre = ?, canciones = ?, duracion = ?, artista = ?, genero = ?, lanzamiento = ? WHERE id = ?');
+        $query->execute([$nombre, $cant_canciones, $duracion, $artista, $genero, $lanzamiento, $id]);
     }
 }
 

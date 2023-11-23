@@ -1,0 +1,59 @@
+<?php
+
+?>
+<form action="agregarVenta" method="POST" >
+<div class="formu">
+
+<label >Producto</label>
+<select name ="producto">
+    <?php foreach($album as $albumes): ?>
+        <option value = "<?= $album->id ?>" > <?= $album->nombre ?> </option>
+        <?php endforeach; ?>
+</select>
+
+<label for="">Via</label>
+<select name = "via">
+    <option name = "EComerce"> EComerce</option>
+    <option name = "tienda"> Local</option>
+</select>
+
+<label for="">Tipo</label>
+<select name = "tipo">
+    <option name = "vinilo"> Vinilo</option>
+    <option name = "cd"> CD</option>
+    <option name = "digital"> Digital</option>
+</select>
+
+<label for="">Precio</label>
+<input type="text" name = "precio">
+
+<button type="submit" >Enviar</button>
+</div>
+
+
+</form>
+
+
+<div class="m-auto" style="width: 80rem; ">
+              <ul  class="list-group">
+            
+                
+            <?php foreach($item as $ventas): ?>
+            
+                    
+                    <li class="list-group-item navbar-expand-lg ">
+                    <a  href="ver"> <?=$ventas->nombre?> </a>
+                    
+                  <a href="borrarVenta/<?php echo $ventas->id?>">borrar</a>  
+                  <a href="mostrarEditVenta/<?php echo $ventas->id?>">editar</a>
+
+                    
+            
+                  </li>
+                    
+                
+                
+                  
+                          <?php
+                          endforeach;?>
+                </ul> 
