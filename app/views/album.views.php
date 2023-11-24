@@ -28,6 +28,7 @@ function mostraradmi($items){
         require 'templates/header.phtml';
         require_once './templates/editaritems.phtml';
     }
+    
 public function editar($id) {
     require 'templates/header.phtml';
     require 'templates/editaritems.phtml';

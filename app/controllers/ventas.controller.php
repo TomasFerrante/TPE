@@ -26,15 +26,14 @@ class VentasController {
         $via = $_POST['via'];
         $tipo = $_POST['tipo'];
         $precio = $_POST['precio'];
-        $producto = $_POST['producto'];
         
         $albumes = $this->modelA->getAll();
 
-        if (empty($id_album) || empty($via) || empty($tipo) || empty($precio) || empty($producto) || !$albumes) {
+        if (empty($id_album) || empty($via) || empty($tipo) || empty($precio) || !$albumes) {
             $this->view->showError(); // Fallo la carga de datos
         }
         else {
-            $this->modelV->insertVenta($id_album, $via, $tipo, $precio, $producto);
+            $this->modelV->insertVenta($id_album, $via, $tipo, $precio);
             header("Location:" . BASE_URL . "listarVentas");
         }
     }
@@ -49,20 +48,20 @@ class VentasController {
         $via = $_POST['via'];
         $tipo = $_POST['tipo'];
         $precio = $_POST['precio'];
-        $producto = $_POST['producto'];
 
-        if (empty($id_album) || empty($via) || empty($tipo) || empty($precio) || empty($producto)) {
+        if (empty($id_album) || empty($via) || empty($tipo) || empty($precio)) {
             $this->view->showError(); // Fallo la carga de datos
         }
         else {
-            $this->modelV->updateVenta($id, $id_album, $via, $tipo, $precio, $producto);
+            $this->modelV->updateVenta($id, $id_album, $via, $tipo, $precio);
             header("Location:" . BASE_URL . "listarVentas");
         }
     }
 
     public function mostrarEditVenta($id) {
         $venta = $this->modelV->getById($id);
-        $this->view->mostrarEditVenta($venta);
+        $albumes = $this->modelA->getAll();
+        $this->view->mostrarEditVenta($venta,$albumes);
     }
 
     function checkSession(){
