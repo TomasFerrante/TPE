@@ -19,9 +19,9 @@ class VentasModel extends Model {
         return $venta;
     }
 
-    public function insertVenta($id_album, $via, $tipo, $precio, $producto) {
-        $query = $this->db->prepare('INSERT INTO ventas (id_album, via, tipo, precio, producto) VALUES (?,?,?,?,?)');
-        $query->execute([$id_album, $via, $tipo, $precio, $producto]);
+    public function insertVenta($id_album, $via, $tipo, $precio) {
+        $query = $this->db->prepare('INSERT INTO ventas (id_album, via, tipo, precio) VALUES (?,?,?,?)');
+        $query->execute([$id_album, $via, $tipo, $precio]);
 
         return $this->db->lastInsertId();
     }
@@ -31,9 +31,9 @@ class VentasModel extends Model {
         $query->execute([$id]);
     }
 
-    public function updateVenta($id, $id_album, $via, $tipo, $precio, $producto) {
-        $query = $this->db->prepare('UPDATE ventas SET id_album = ?, via = ?, tipo = ?, precio = ?, producto = ? WHERE id = ?');
-        $query->execute([$id_album, $via, $tipo, $precio, $producto,$id]);
+    public function updateVenta($id, $id_album, $via, $tipo, $precio) {
+        $query = $this->db->prepare('UPDATE ventas SET id_album = ?, via = ?, tipo = ?, precio = ? WHERE id = ?');
+        $query->execute([$id_album, $via, $tipo, $precio,$id]);
     }
 }
 

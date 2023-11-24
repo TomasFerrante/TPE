@@ -1,0 +1,23 @@
+
+<form action="../editarVenta/<?= $venta->id?>" method="POST">
+        <div class="mb-3">
+           <p>Editar</p>
+            
+           <select name ="id_album">
+            <?php foreach($albumes as $album): ?>
+                <option name = "<?=$album->id?> "value = "<?= $album->id ?>" > <?= $album->nombre ?> </option>
+            <?php endforeach; ?>
+           </select>
+            
+           <label for="nuevo">editar via:</label>
+            <input name="via" value= "<?= $venta->via?>" type="text" >
+
+            <label for="nuevo">editar tipo:</label>
+            <input name="tipo" value= "<?= $venta->tipo?>" type="text" >
+
+            <label for="nuevo">editar precio:</label>
+            <input name="precio" value= "<?= $venta->precio?>" type="text" >
+
+            <input type="submit" class="btn btn-primary" value="enviar">enviar</input>
+        </div>
+    </form>
