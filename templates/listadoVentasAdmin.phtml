@@ -1,0 +1,25 @@
+<div class="m-auto" style="width: 80rem; ">
+              <ul  class="list-group">
+            
+                
+            <?php foreach($item as $ventas): ?>
+            
+                    
+                    <li class="list-group-item navbar-expand-lg ">
+                    <a  href="ver"> <?=$ventas->id?> </a>
+                    
+                    <?= $ventas->tipo?>
+                    <?= $ventas->via?>
+                    <?= $ventas->precio?>
+
+                    <a href="borrarVenta"> Borrar </a>
+                    <a href="editarVenta"> Editar </a>
+        
+                  </li>
+                    
+                
+                
+                  
+                          <?php
+                          endforeach;?>
+                </ul> 

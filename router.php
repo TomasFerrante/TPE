@@ -2,9 +2,7 @@
 include_once 'app/controllers/auth.controllers.php';
 include_once 'app/controllers/usuarios.php';
 include_once 'app/controllers/album.controllers.php';
-include_once 'app/controllers/categorias.controllers.php';
 include_once './app/controllers/ventas.controller.php';
-include_once './app/helpers/auth.helper.php';
 
 
 
@@ -40,16 +38,16 @@ switch ($params[0]) {
 
    case 'administrar' :
     $controller = new VentasController();
-    $controller->
+    $controller->viewAdmin();
     break;
 
    case 'listar':
-    $controller = new albumcontrollers();
-    $controller->veralbum();
+    $controller = new VentasController();
+    $controller->viewAdmin();
     break;
 
    case 'logout':
-    $controller = new AuthHelper();
+    $controller = new authcontrollers();
     $controller->logout();
     break;
 
@@ -61,7 +59,7 @@ switch ($params[0]) {
    case 'agregarVenta':
     $controller = new VentasController();
     $controller->addVenta();
-    break; 
+    break;
    
    case 'agregar':
     $controller = new albumcontrollers();
