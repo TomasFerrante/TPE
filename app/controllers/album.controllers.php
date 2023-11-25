@@ -86,9 +86,9 @@ class albumcontrollers{
     function verdetallado($id){
 
       
-        //$items= $this->models->obtenerdetallado($id);
+        $items= $this->models->getAlbumById($id);
           //OBTINEN LAS TAREAS DEL MODELO
-           //$this->views->mostrardetallado($items);
+           $this->views->mostrardetallado($items);
            
    
       

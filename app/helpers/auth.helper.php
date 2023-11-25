@@ -17,16 +17,16 @@
     public static function logout() {
         AuthHelper::init();
         session_destroy();
+        header('Location: ' .BASE_URL );
     }
 
     public static function verify() {
         AuthHelper::init();
         if (!isset($_SESSION['USER_ID'])) {
-            header('Location: ' .BASE_URL . '/login');
-            die();
+            return false;
         }
+        return true;
     }
-
 }
 
 ?>

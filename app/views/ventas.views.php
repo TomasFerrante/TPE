@@ -10,6 +10,11 @@ class VentasView {
         require_once './templates/header.phtml';
         require_once './templates/editarVentas.phtml';
     }
+
+    public function viewVentas($item, $albumes) {
+        require_once './templates/header.phtml';
+        require_once './templates/listadoVentas.phtml';
+    }
 }
 
 ?>

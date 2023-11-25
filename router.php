@@ -4,6 +4,7 @@ include_once 'app/controllers/usuarios.php';
 include_once 'app/controllers/album.controllers.php';
 include_once 'app/controllers/categorias.controllers.php';
 include_once './app/controllers/ventas.controller.php';
+include_once './app/helpers/auth.helper.php';
 
 
 
@@ -37,9 +38,19 @@ switch ($params[0]) {
     $controller->loginusuario();
     break;
 
+   case 'administrar' :
+    $controller = new VentasController();
+    $controller->
+    break;
+
    case 'listar':
     $controller = new albumcontrollers();
     $controller->veralbum();
+    break;
+
+   case 'logout':
+    $controller = new AuthHelper();
+    $controller->logout();
     break;
 
    case 'listarVentas':
