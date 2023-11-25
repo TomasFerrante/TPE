@@ -1,6 +1,9 @@
 <?php
+
 include_once 'app/views/auth.views.php';
 include_once 'app/models/user.model.php';
+include_once './app/helpers/auth.helper.php';
+
 class authcontrollers{
 
     private $views;
@@ -19,6 +22,9 @@ class authcontrollers{
     public function loginusuario(){
         $email=  $_POST['email'];
         $password= $_POST['password'];
+
+        var_dump($_POST);
+        
         if(empty ($email)||empty($password)){
             $this->views->iniciarsesion('Faltan datos');
             return;
@@ -34,11 +40,9 @@ class authcontrollers{
           
             //armo la session del usuario
 
-            session_start();
-            $_SESSION['ID_USUARIO'] = $usuario->id;
-            $_SESSION['EMAIL_USUARIO']= $usuario->email;
+            AutenticarHelper::login($usuario);
 
-             header("Location:" . BASE_URL . "listar");
+            header('Location: ' .BASE_URL. 'administrar');
         }
         else {
             $this->views->iniciarsesion('acceso denegado');
@@ -50,5 +54,10 @@ class authcontrollers{
     public function error($error){
         $this->views->mostrarerror($error);
     }
-  
+
+    public function logout() {
+        AutenticarHelper::logout();
+        header('Location: ' .BASE_URL);
+    }
+    
 }

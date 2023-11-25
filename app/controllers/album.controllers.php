@@ -70,7 +70,7 @@ class albumcontrollers{
         //$this->models->updateAlbum($id, $nuevo);
         header('Location: ' . BASE_URL . 'listar');
     }
-}  
+}
 
 
 

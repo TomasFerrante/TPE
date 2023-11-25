@@ -1,6 +1,6 @@
 <?php
 
- class AuthHelper {
+class AutenticarHelper {
 
     public static function init() {
         if (session_status() != PHP_SESSION_ACTIVE) {
@@ -9,24 +9,23 @@
     }
 
     public static function login($user) {
-        AuthHelper::init();
-        $_SESSION['USER_ID'] = $user->id;
-        $_SESSION['USER_EMAIL'] = $user->email;
+        AutenticarHelper::init();
+        
+        $_SESSION['USER_ID'] = $user->USER_ID;
+        $_SESSION['USER_EMAIL'] = $user->USER_EMAIL;
+        // var_dump( $_SESSION['USER_ID'],  $_SESSION['USER_EMAIL']);
     }
 
     public static function logout() {
-        AuthHelper::init();
+        AutenticarHelper::init();
         session_destroy();
-        header('Location: ' .BASE_URL );
     }
 
     public static function verify() {
-        AuthHelper::init();
+        AutenticarHelper::init();
         if (!isset($_SESSION['USER_ID'])) {
-            return false;
+            header('Location: ' . BASE_URL . 'administrar');
+            die();
         }
-        return true;
     }
 }
-
-?>

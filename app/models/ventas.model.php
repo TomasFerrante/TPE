@@ -19,7 +19,7 @@ class VentasModel extends Model {
         return $venta;
     }
 
-    public function insertVenta($id_album, $via, $tipo, $precio) {
+    public function insertVenta($id_album,$via, $tipo, $precio) {
         $query = $this->db->prepare('INSERT INTO ventas (id_album, via, tipo, precio) VALUES (?,?,?,?)');
         $query->execute([$id_album, $via, $tipo, $precio]);
 
