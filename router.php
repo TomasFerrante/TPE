@@ -100,16 +100,6 @@ switch ($params[0]) {
     $controllers = new albumcontrollers();
     $controllers->mostrarFormEdit($params[1]);
     break;
-   
-   case 'categorias':
-    $controller=new categoriascontrollers();
-    $controller->vercategorias($params[0]);
-    break;
-
-   case 'mostrarcategorias':
-    $controller=new categoriascontrollers();
-    $controller->mostraritems($params[1]);
-    break;
 
     default: 
     //CAMBIAR A ERRORES.PHTML
