@@ -1,0 +1,36 @@
+<?php
+?>
+
+<form action="addVenta" method="POST" >
+<div class="formu">
+
+<label >Producto</label>
+<select name ="id_album">
+    <?php foreach($albumes as $album): ?>
+        <option name = "<?=$album->id?> "value = "<?= $album->id ?>" > <?= $album->nombre ?> </option>
+        <?php endforeach; ?>
+</select>
+
+<label for="">Via</label>
+<select name = "via">
+    <option name = "ecomerce"> EComerce</option>
+    <option name = "tienda"> Local</option>
+</select>
+
+<label for="">Tipo</label>
+<select name = "tipo">
+    <option name = "vinilo"> Vinilo</option>
+    <option name = "cd"> CD</option>
+    <option name = "digital"> Digital</option>
+    <option name = "cassette"> Cassette</option>
+</select>
+
+<label for="">Precio</label>
+<input type="text" name = "precio">
+
+<button type="submit" >Enviar</button>
+</div>
+
+
+</form>
+

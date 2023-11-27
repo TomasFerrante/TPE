@@ -8,41 +8,43 @@ class authcontrollers{
 
     private $views;
     private $model;
+    private $helper;
 
     public function __construct(){
         
         $this->views= new authviews();
         $this->model= new UserModel();
+        $this->helper= new AutenticarHelper();
     }
+    
     public function iniciosesion(){
         $this->views->iniciarsesion();
         
     }
-
+    
+    function initializeSession(){
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+    }
+    
     public function loginusuario(){
-        $email=  $_POST['email'];
+        $username= $_POST['username'];
         $password= $_POST['password'];
-
-        var_dump($_POST);
         
-        if(empty ($email)||empty($password)){
+        if(empty ($username)||empty($password)){
             $this->views->iniciarsesion('Faltan datos');
             return;
-        
-        die();
     }
      
-          //aca obtinen los datos del usuario
-        $usuario= $this->model->getByEmail($email);
-         //si el usuario existes
-        if($usuario && password_verify($password, $usuario->password) ){
-            
           
-            //armo la session del usuario
-
-            AutenticarHelper::login($usuario);
-
-            header('Location: ' .BASE_URL. 'administrar');
+        $user= $this->model->getByEmail($username);
+         
+        if($user && password_verify($password, $user->password) ){
+            $this->initializeSession();
+            $_SESSION['id'] = $user->id;
+            $_SESSION['user'] = $user->username;
+            header('Location: ' . BASE_URL . 'administrar-ventas');
         }
         else {
             $this->views->iniciarsesion('acceso denegado');
@@ -60,4 +62,11 @@ class authcontrollers{
         header('Location: ' .BASE_URL);
     }
     
+    public function verificar() {
+        $this->initializeSession();
+        if(!isset($_SESSION['user'])) {
+            header('Location: ' . BASE_URL . 'login');
+            die();
+        }
+    }
 }

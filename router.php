@@ -36,7 +36,7 @@ switch ($params[0]) {
     $controller->loginusuario();
     break;
 
-   case 'administrar' :
+   case 'administrar-ventas' :
     $controller = new VentasController();
     $controller->viewAdmin();
     break;
@@ -57,6 +57,11 @@ switch ($params[0]) {
     break;
 
    case 'agregarVenta':
+    $controller = new VentasController();
+    $controller->mostrarAddVenta();
+    break;
+
+   case 'addVenta' :
     $controller = new VentasController();
     $controller->addVenta();
     break;

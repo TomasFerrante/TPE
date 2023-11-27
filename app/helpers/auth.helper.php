@@ -23,8 +23,8 @@ class AutenticarHelper {
 
     public static function verify() {
         AutenticarHelper::init();
-        if (!isset($_SESSION['USER_ID'])) {
-            header('Location: ' . BASE_URL . 'administrar');
+        if (!isset($_SESSION['USER_EMAIL'])) {
+            header('Location: ' . BASE_URL . 'login');
             die();
         }
     }
