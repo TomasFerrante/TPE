@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2023 at 04:10 AM
+-- Generation Time: Nov 27, 2023 at 04:53 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -34,20 +34,19 @@ CREATE TABLE `album` (
   `duracion` int(11) NOT NULL,
   `artista` varchar(45) NOT NULL,
   `genero` varchar(45) NOT NULL,
-  `lanzamiento` date NOT NULL,
-  `precio` int(45) NOT NULL
+  `lanzamiento` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `categorias`
+-- Dumping data for table `album`
 --
 
-CREATE TABLE `categorias` (
-  `id_categoria` int(11) NOT NULL,
-  `genero` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `album` (`id`, `nombre`, `canciones`, `duracion`, `artista`, `genero`, `lanzamiento`) VALUES
+(1, 'Álbum Ejemplo', 12, 45, 'Artista Ejemplo', 'Pop', '2023-01-01'),
+(2, 'Otro Álbum', 10, 38, 'Otro Artista', 'Rock', '2023-02-15'),
+(3, 'Álbum Increíble', 15, 50, 'Artista Increíble', 'Electrónica', '2023-03-20'),
+(4, 'ERROR', 14, 48, 'The Warning', 'Rock', '2022-11-26'),
+(5, 'The Wall', 26, 81, 'Pink Floyd', 'Rock', '1979-06-29');
 
 -- --------------------------------------------------------
 
@@ -57,7 +56,7 @@ CREATE TABLE `categorias` (
 
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
-  `email` varchar(200) NOT NULL,
+  `username` varchar(200) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -65,7 +64,7 @@ CREATE TABLE `usuarios` (
 -- Dumping data for table `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `email`, `password`) VALUES
+INSERT INTO `usuarios` (`id`, `username`, `password`) VALUES
 (1, 'webadmin', '$2y$10$HPPHxvPCbxUSDYVbIRKJPuBpgrE1UC7z9JKwZZubHrgv/ChlK2eie');
 
 -- --------------------------------------------------------
@@ -77,11 +76,23 @@ INSERT INTO `usuarios` (`id`, `email`, `password`) VALUES
 CREATE TABLE `ventas` (
   `id` int(11) NOT NULL,
   `id_album` int(45) NOT NULL,
+  `nombre_album` varchar(45) NOT NULL,
   `via` varchar(45) NOT NULL,
   `tipo` varchar(45) NOT NULL,
-  `precio` double NOT NULL,
-  `producto` varchar(45) NOT NULL
+  `precio` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ventas`
+--
+
+INSERT INTO `ventas` (`id`, `id_album`, `nombre_album`, `via`, `tipo`, `precio`) VALUES
+(2, 5, 'Vinilo', 'Online', 'Venta en Tienda', 39.99),
+(3, 1, 'Descarga digital', 'Online', 'Venta online', 15),
+(4, 4, 'Casete', 'Tienda física', 'Venta directa', 12.99),
+(6, 2, 'CD', 'Tienda Física', 'Venta Directa', 20.99),
+(7, 4, 'Descarga Digital', 'Sitio Web', 'Venta Online', 15.5),
+(25, 4, 'ERROR', 'Local', 'Vinilo', 19.99);
 
 --
 -- Indexes for dumped tables
@@ -92,12 +103,6 @@ CREATE TABLE `ventas` (
 --
 ALTER TABLE `album`
   ADD PRIMARY KEY (`id`) USING BTREE;
-
---
--- Indexes for table `categorias`
---
-ALTER TABLE `categorias`
-  ADD PRIMARY KEY (`id_categoria`);
 
 --
 -- Indexes for table `usuarios`
@@ -120,13 +125,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT for table `album`
 --
 ALTER TABLE `album`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `categorias`
---
-ALTER TABLE `categorias`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
@@ -138,7 +137,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Constraints for dumped tables
@@ -148,7 +147,7 @@ ALTER TABLE `ventas`
 -- Constraints for table `ventas`
 --
 ALTER TABLE `ventas`
-  ADD CONSTRAINT `fk_id` FOREIGN KEY (`id_album`) REFERENCES `album` (`id`);
+  ADD CONSTRAINT `id_album_fk` FOREIGN KEY (`id_album`) REFERENCES `album` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
