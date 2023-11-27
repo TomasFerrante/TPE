@@ -42,16 +42,14 @@
             
                     
                     <li class="list-group-item navbar-expand-lg ">
-                    <a  href="ver"> <?=$ventas->id?> </a>
+                    <a  href="verVenta/<?=$ventas->id?>" <?=$ventas->id?>> <?=$ventas->id?> </a>
                     <?= $ventas->tipo?>
+
                     <?= $ventas->via?>
                     <?= $ventas->precio?>
         
                   </li>
-                    
-                
-                
-                  
+        
                           <?php
                           endforeach;?>
                 </ul> 

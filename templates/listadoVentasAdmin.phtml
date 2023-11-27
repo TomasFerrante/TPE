@@ -6,8 +6,9 @@
             
                     
                     <li class="list-group-item navbar-expand-lg ">
-                    <a  href="ver"> <?=$ventas->id?> </a>
+                    <a  href="verVenta/<?=$ventas->id?>" <?=$ventas->id?>> <?=$ventas->id?> </a>
                     
+                    <?= $ventas->nombre_album?>
                     <?= $ventas->tipo?>
                     <?= $ventas->via?>
                     <?= $ventas->precio?>

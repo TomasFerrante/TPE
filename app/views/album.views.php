@@ -10,7 +10,7 @@ function mostrar($items){
     require './templates/listado.phtml';
     
 }
-function mostrardetallado($albumes){
+function mostrardetallado($id){
     require 'templates/header.phtml';
     require 'templates/mostrardetallado.phtml';
     

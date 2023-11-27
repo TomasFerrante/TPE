@@ -1,7 +1,7 @@
 
 <table class="table m-auto" style="width: 75rem; ">
 <thead class="table-dark">
-        <th>nombre albumes</th>
+        <th>nombre album</th>
         <th>cantidad de canciones</th>
         <th>duracion </th>
         <th>artistas </th>
@@ -13,13 +13,13 @@
  
 
 		<tr>
-			<td><?=$albumes->nombre?> </td>
-                
-			<td><?=$albumes->canciones?></td>
-                        <td><?=$albumes->duracion?></td>
-                        <td><?=$albumes->artista?></td>
-                        <td><?=$albumes->genero?></td>
-                        <td><?=$albumes->lanzamiento?></td>
+                        <?php var_dump($id); ?>
+			<td> <?=$id->nombre?> </td>
+			<td> <?=$id->canciones?></td>
+                        <td> <?=$id->duracion?></td>
+                        <td> <?=$id->artista?></td>
+                        <td> <?=$id->genero?></td>
+                        <td> <?=$id->lanzamiento?></td>
                         
             
             

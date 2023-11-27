@@ -76,6 +76,10 @@ switch ($params[0]) {
     $controller->verdetallado($params[1]);
     break;
 
+   case 'verVenta' :
+    $controller = new VentasController();
+    $controller->showVenta($params[1]);
+
    case 'borrar':
     $controller = new albumcontrollers();
     $controller->borrar($params[1]);

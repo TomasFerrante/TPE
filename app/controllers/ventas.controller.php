@@ -23,12 +23,16 @@ class VentasController {
         $this->view->viewVentas($ventas, $albumes);
     }
 
+    public function showVenta($id) {
+        $venta = $this->modelV->getById($id);
+        $this->view->showVenta($venta);
+    }
+
     public function addVenta() {
 
         $this->helper->verificar();
         
         $id_album = $_POST['id_album'];
-        $nombre_album = $_POST['nombre'];
         $via = $_POST['via'];
         $tipo = $_POST['tipo'];
         $precio = $_POST['precio'];
@@ -69,12 +73,7 @@ class VentasController {
                 $this->modelV->updateVenta($id, $id_album, $via, $tipo, $precio);
                 header("Location:" . BASE_URL . "administrar-ventas");
             }
-            
-            
-
-
-            
-            
+             
         }
         
         public function mostrarAddVenta() {

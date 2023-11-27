@@ -22,6 +22,11 @@ class VentasView {
         require_once './templates/añadirVentaAdmin.phtml';
 
     }
+
+    public function showVenta($id) {
+        require_once './templates/header.phtml';
+        require_once './templates/verVenta.phtml';
+    }
 }
 
 ?>
